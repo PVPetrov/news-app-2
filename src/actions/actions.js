@@ -26,7 +26,9 @@ export const fetch_articles = (topic) => {
             let payload = normalize(response.data.articles, [article]);
             console.log(payload);
             dispatch(receive_articles(payload));
+        }, error => {
+            console.log(error);
+            dispatch(request_articles_fail(error));
         })
-        .catch(err => console.log(err))
     }
 }

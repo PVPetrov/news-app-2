@@ -14,7 +14,6 @@ class App extends Component {
               <Layout>
                   <Header>Quick News</Header>
                   <Layout>
-                      <Sider>Sider</Sider>
                       <Layout>
                           <Content style={{width: '100%', minHeight: '1000px'}}>
                               <NewsHOC />

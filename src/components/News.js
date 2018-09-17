@@ -1,10 +1,13 @@
 import React from 'react';
 import { Button } from 'antd';
+import Article from './Article';
 
-const News = ({fetch_articles}) => (
-    <div>
-        <Button onClick={() => fetch_articles('bitcoin')}>Press Me</Button>
-    </div>
-);
-
+const News = ({articles}) => {
+    let articlesList = articles.map( article => {return <Article key={article.url} article={article} />});
+    return(
+        <div style={{maxWidth: '800px', minWidth: '300px', margin: '0 auto'}}>
+        {articlesList}
+        </div>
+    );
+}
 export default News;
