@@ -1,30 +1,37 @@
 import React, { Component } from 'react';
-import { Layout, Menu, Button } from 'antd';
+import { Switch, Route, Link } from 'react-router-dom';
+import { Layout, Menu } from 'antd';
 import NewsHOC from '../containers/NewsHOC';
 import '../App.css';
 
-const { Header, Footer, Sider, Content } = Layout;
-
+const { Header, Footer, Content } = Layout;
 
 
 class App extends Component {
     render() {
         return (
-          <div className="App">
-              <Layout>
-                  <Header>Quick News</Header>
-                  <Layout>
-                      <Layout>
-                          <Content style={{width: '100%', minHeight: '1000px'}}>
-                              <NewsHOC />
-                          </Content>
-                          <Footer>Footer</Footer>
-                      </Layout>
-                  </Layout>
-              </Layout>
-          </div>
-    );
-  }
+            <Layout>
+                <Header style={{ position: 'fixed', zIndex: 1, width: '100%'}}>
+                    <Menu
+                    theme="dark"
+                    mode="horizontal"
+                    defaultSelectedKeys={['1']}
+                    style={{ lineHeight: '64px' }}
+                    >
+                        <Menu.Item key="1"><Link to="/news">Quick News</Link></Menu.Item>
+                    </Menu>
+                </Header>
+                <Content style={{ marginTop: 64 }}>
+                    <Switch>
+                        <Route exact path="/news" component={NewsHOC} />
+                        <Route  path="/news/:index" component={NewsHOC} />
+                    </Switch>
+                </Content>
+                <Footer>News App</Footer>
+            </Layout>
+        );
+    }
 }
+
 
 export default App;

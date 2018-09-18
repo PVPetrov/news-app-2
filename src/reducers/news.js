@@ -5,11 +5,9 @@ import { union } from 'lodash';
 const articlesByUrl = (state = {}, action) => {
     switch(action.type){
         case 'RECEIVE_ARTICLES':
-        console.log(action.payload);
         const nextStateArticles = {...state};
             let articles = action.payload.entities.articles;
             for( let article in articles){
-                console.log(article);
                 nextStateArticles[article] =  articles[article]
             };
             return nextStateArticles;

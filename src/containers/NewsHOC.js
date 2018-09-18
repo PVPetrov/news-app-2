@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetch_articles } from '../actions/actions';
 import News from '../components/News';
@@ -34,6 +35,6 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-NewsHOC = connect(mapStateToProps, mapDispatchToProps)(NewsHOC);
+NewsHOC = withRouter(connect(mapStateToProps, mapDispatchToProps)(NewsHOC));
 
 export default NewsHOC;

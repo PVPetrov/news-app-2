@@ -24,10 +24,8 @@ export const fetch_articles = (topic) => {
         axios.get(`https://newsapi.org/v2/everything?sortBy=publishedAt&apiKey=6f7080de764847a49dba2021c943d24f&langauge=english&q=${topic}`)
         .then( response => {
             let payload = normalize(response.data.articles, [article]);
-            console.log(payload);
             dispatch(receive_articles(payload));
         }, error => {
-            console.log(error);
             dispatch(request_articles_fail(error));
         })
     }
